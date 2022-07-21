@@ -63,6 +63,7 @@ rect(ex[,1], ex[,3], ex[,2], ex[, 4])
 Get lonlat from bin and vice versa. 
 
 ```{r bin}
+
 plot(range(ex[,1:2]), range(ex[,3:4]))
 rect(ex[,1], ex[,3], ex[,2], ex[, 4])
 

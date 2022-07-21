@@ -4,6 +4,8 @@
 # L3bin
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/hypertidy/L3bin/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hypertidy/L3bin/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of L3bin is to provide the [Integerized Sinusoidal Binning
@@ -64,6 +66,7 @@ rect(ex[,1], ex[,3], ex[,2], ex[, 4])
 Get lonlat from bin and vice versa.
 
 ``` r
+
 plot(range(ex[,1:2]), range(ex[,3:4]))
 rect(ex[,1], ex[,3], ex[,2], ex[, 4])
 
