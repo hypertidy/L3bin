@@ -9,4 +9,5 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
-URL: https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/
+URL: https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/,
+    https://hypertidy.github.io/L3bin/

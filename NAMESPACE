@@ -3,4 +3,7 @@
 export(L3bin)
 export(bin_from_lonlat)
 export(crop_bins)
+export(extent_from_bin)
+export(lonlat_from_bin)
 export(row_from_lat)
+importFrom(utils,tail)
