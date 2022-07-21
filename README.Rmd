@@ -73,6 +73,39 @@ abline(v = 147, h = -42, col = "firebrick")
 bin_from_lonlat(147, -42, nr)
 ```
 
+Using the crop from above, reproject after densifying (safely) with sf
+
+```{r reproj}
+nr <- 96
+bins <- L3bin(nr)
+ex <- extent_from_bin(1:bins$totbins, nr)
+lbins <- crop_bins(bins, extent = c(100, 180, -90, -20))
+ex <- extent_from_bin(lbins, nr)
+
+## generally sf a bad idea because 4 numbers xmin,xmax,ymin,ymax become 10
+## and we could use mesh3d or similar from silicate (SC0), but here's an example
+## just to show a projected set of the bins
+to_sf <- function(ex, crs = "OGC:CRS84") {
+  idx <- c(1, 2, 2, 1, 1, 
+           3, 3, 4, 4, 3)
+  proto <- sf::st_polygon(list(cbind(0, c(1:4, 1))))
+  sf::st_sfc(lapply(split(t(ex), rep(1:nrow(ex), each = 4L)), 
+         function(.x) {
+           proto[[1L]][] <- .x[idx]
+           proto
+         }), crs = crs)
+}
+sf::sf_use_s2(FALSE)
+segit <- function(x, dx = 1) {
+  crs <- sf::st_crs(x)
+  sf::st_set_crs(sf::st_segmentize(sf::st_set_crs(x, NA), dx), crs)
+}  
+prj <- "+proj=laea +lat_0=-80"
+## dx is 1 degree in straightforward sense
+plot(sf::st_transform(segit(to_sf(ex), 1), prj))
+mm <- reproj::reproj(do.call(cbind, maps::map(plot = FALSE)[1:2]), prj, source = "+proj=longlat")[,1:2]
+lines(mm)
+```
 
 No reprojecting yet, need to check some stuff and probably densify the edges ... there is densify funs in sosoc/croc WIP
 
