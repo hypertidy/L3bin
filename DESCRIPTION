@@ -1,0 +1,12 @@
+Package: L3bin
+Title: Integerized Sinusoidal Binning Scheme for Level 3 Data
+Version: 0.0.0.9000
+Authors@R: 
+   c(person("Michael D.","Sumner", role = c("aut", "cre"), email = "mdsumner@gmail.com"), 
+    person("NASA's OceanColor Web", role = c("ctb", "cph")))
+Description: The NASA Ocean Biology processing Group L3 bin scheme, based on the sinusoidal map projection.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+URL: https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/
