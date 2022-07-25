@@ -126,6 +126,9 @@ L3bin <- function(NUMROWS = 2160) {
   numbin <- trunc(2 * NUMROWS * cos(latbin * pi/180) + 0.5)
   basebin <- cumsum(c(1L, numbin[-length(numbin)]))
   totbins = basebin[NUMROWS] + numbin[NUMROWS] - 1
+  if (totbins > (2^31-1)) {
+    message("maximum NUMROWS is approximately 41000, the grid cell logic may overflow - see github issue #3")
+  }
   list(NUMROWS = NUMROWS, latbin = latbin,
        numbin = numbin, basebin = basebin, totbins = totbins)
 }
