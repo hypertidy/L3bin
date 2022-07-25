@@ -4,10 +4,11 @@ Version: 0.0.0.9000
 Authors@R: 
    c(person("Michael D.","Sumner", role = c("aut", "cre"), email = "mdsumner@gmail.com"), 
     person("NASA's OceanColor Web", role = c("ctb", "cph")))
-Description: The NASA Ocean Biology processing Group L3 bin scheme, based on the sinusoidal map projection.
+Description: The NASA Ocean Biology processing Group L3 bin scheme, based on the sinusoidal map projection. Psuedo
+ code for the binning scheme was published in  Appendix A of NASA Technical Memorandum 104566, Vol. 32., listed in URL. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
-URL: https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/,
-    https://hypertidy.github.io/L3bin/
+URL: https://github.com/hypertidy/L3bin
+BugReports: https://github.com/hypertidy/L3bin/issues
