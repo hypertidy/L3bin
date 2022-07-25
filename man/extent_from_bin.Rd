@@ -11,9 +11,20 @@ extent_from_bin(bin, NUMROWS)
 
 \item{NUMROWS}{relevant number of L3 bin rows}
 }
+\value{
+matrix of extent columns xmin,xmax,ymin,ymax -
+}
 \description{
 Calculate bin boundaries from bin number
 }
 \details{
-Originally from sosoc/croc where it is called bin2bounds
+Bin boundaries are the xmin, xmax, ymin, ymax edge of each bin  - compare to the output of \verb{ }lonlat_from_bin` which returns only the centre of each bin.
+This function previously lived in sosoc/croc where it is called bin2bounds
+}
+\examples{
+bins <- L3bin(NUMROWS = 12)
+ex <- extent_from_bin(1:bins$totbins, 12)
+plot(range(ex[,1:2]), range(ex[,3:4]), type = "n", asp = 1)
+points(lonlat_from_bin(1:bins$totbins, 12), pch = "+", cex = .8)
+rect(ex[,1], ex[,3], ex[,2], ex[,4])
 }

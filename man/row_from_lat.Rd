@@ -12,8 +12,12 @@ row_from_lat(lat, NUMROWS)
 \item{NUMROWS}{number of rows in the grid}
 }
 \description{
-Originally from sosoc/croc where it is called .lat2row.
+Row is 1-based, and starts at the southern-most row.
+}
+\details{
+This function previously lived in sosoc/croc where it is called .lat2row.
 }
 \examples{
 row_from_lat(-42, 1024)
+row_from_lat(c(-90, 0, 90), 1024)
 }

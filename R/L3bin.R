@@ -11,7 +11,7 @@
 #'
 #' Crop L3 list, returns bins that fall within the extent.
 #'
-#' duplicated from sosoc/croc where it is called crop_init
+#' This function previously lived in sosoc/croc where it is called crop_init
 #' @param x L3bin object
 #' @param extent vector of 'c(xmin, xmax, ymin, ymax)'
 #' @return  integer vector of bins
@@ -22,7 +22,7 @@
 crop_bins <- function(x, extent) {
   if (any(diff(extent)[c(1, 3)] <= 0)) stop("invalid extent, must be c(xmin, xmax, ymin, ymax)")
   ext <- extent
-  nrows <- length(x$basebin)
+  nrows <- x$NUMROWS
   ilat <- which(x$latbin >= ext[3L] & x$latbin <= ext[4L] )
 
   ilat <- .snapout1(ilat, 1L, nrows)
@@ -44,13 +44,18 @@ crop_bins <- function(x, extent) {
 
 #' Latitude to row
 #'
-#' Originally from sosoc/croc where it is called .lat2row.
+#'
+#' Row is 1-based, and starts at the southern-most row.
+#'
+#' This function previously lived in sosoc/croc where it is called .lat2row.
+#'
 #' @param lat latitude
 #' @param NUMROWS number of rows in the grid
 #'
 #' @export
 #' @examples
 #' row_from_lat(-42, 1024)
+#' row_from_lat(c(-90, 0, 90), 1024)
 row_from_lat <- function(lat, NUMROWS) {
   row <- as.integer((90 + lat) * NUMROWS/180.0)
   row[row >= NUMROWS] <- NUMROWS - 1;
@@ -62,13 +67,16 @@ row_from_lat <- function(lat, NUMROWS) {
 #'
 #' Bin number from longitude and latitude for a given grid with NUMROWS unique latitudes.
 #'
-#' Originally from sosoc/croc where it is called lonlat2bin
+#' This function previously lived in sosoc/croc where it is called lonlat2bin
 #' @param lon longitude
 #' @param lat latitude
-#' @param NUMROWS number of rows
+#' @param NUMROWS number of rows in the grid
+#'
+#' @return integer vector of bin number
 #' @export
 #' @examples
 #' bin_from_lonlat(147, -42, 1024)
+#' bin_from_lonlat(c(0, 0, 0), c(-90, 0, 90), 1024)
 bin_from_lonlat <- function(lon, lat, NUMROWS) {
   ibin <- L3bin(NUMROWS)
   row <- row_from_lat(lat, NUMROWS)
@@ -81,14 +89,17 @@ bin_from_lonlat <- function(lon, lat, NUMROWS) {
 #'
 #' Generate longitude and latitude coordinates from bin number.
 #'
-#' Originally from sosoc/croc where it is called bin2lonlat
+#' This function previously lived in  sosoc/croc where it is called bin2lonlat
 #' @param bins bin number
-#' @param nrows number of rows in this grid
+#' @param NUMROWS number of rows in this grid
+#' @return matrix of longitude, latitude the centre coordinate of the bin
 #' @export
-lonlat_from_bin <- function(bins, nrows) {
-  row <- seq_len(nrows) - 1
-  latbin = ((row + 0.5)*180.0/nrows) - 90.0;
-  numbin <- as.integer((2*nrows*cos(latbin*pi/180.0) + 0.5))
+#' @examples
+#' lonlat_from_bin(c(1, 184), 12)
+lonlat_from_bin <- function(bins, NUMROWS) {
+  row <- seq_len(NUMROWS) - 1
+  latbin = ((row + 0.5)*180.0/NUMROWS) - 90.0;
+  numbin <- as.integer((2*NUMROWS*cos(latbin*pi/180.0) + 0.5))
   basebin <- c(1L, utils::head(cumsum(numbin) + 1L, -1L))
   totbins <- utils::tail(basebin, 1) + utils::tail(numbin, 1) - 1
   index <- findInterval(bins, basebin)
@@ -101,7 +112,7 @@ lonlat_from_bin <- function(bins, nrows) {
 #'
 #' Set up the basic values for the bin scheme for given number of rows.
 #'
-#' Originally from sosoc/croc where it is called initbin
+#' This function previously lived in sosoc/croc where it is called initbin
 #' @param NUMROWS relevant number of L3 bin rows
 #' @export
 #' @references https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/
@@ -115,7 +126,8 @@ L3bin <- function(NUMROWS = 2160) {
   numbin <- trunc(2 * NUMROWS * cos(latbin * pi/180) + 0.5)
   basebin <- cumsum(c(1L, numbin[-length(numbin)]))
   totbins = basebin[NUMROWS] + numbin[NUMROWS] - 1
-  list(latbin = latbin, numbin = numbin, basebin = basebin, totbins = totbins)
+  list(NUMROWS = NUMROWS, latbin = latbin,
+       numbin = numbin, basebin = basebin, totbins = totbins)
 }
 
 
@@ -123,10 +135,19 @@ L3bin <- function(NUMROWS = 2160) {
 #'
 #' Calculate bin boundaries from bin number
 #'
-#' Originally from sosoc/croc where it is called bin2bounds
+#' Bin boundaries are the xmin, xmax, ymin, ymax edge of each bin  - compare to the output of `
+#' `lonlat_from_bin` which returns only the centre of each bin.
+#' This function previously lived in sosoc/croc where it is called bin2bounds
 #' @param bin bin number
 #' @param NUMROWS relevant number of L3 bin rows
+#' @return matrix of extent columns xmin,xmax,ymin,ymax -
 #' @export
+#' @examples
+#' bins <- L3bin(NUMROWS = 12)
+#' ex <- extent_from_bin(1:bins$totbins, 12)
+#' plot(range(ex[,1:2]), range(ex[,3:4]), type = "n", asp = 1)
+#' points(lonlat_from_bin(1:bins$totbins, 12), pch = "+", cex = .8)
+#' rect(ex[,1], ex[,3], ex[,2], ex[,4])
 extent_from_bin <- function(bin, NUMROWS) {
   row = NUMROWS - 1;
   latbin <- (((seq(NUMROWS) - 1) + 0.5) * 180 / NUMROWS ) - 90

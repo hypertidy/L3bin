@@ -106,21 +106,18 @@ to_sf <- function(ex, crs = "OGC:CRS84") {
 }
 sf::sf_use_s2(FALSE)
 #> Spherical geometry (s2) switched off
-segit <- function(x, dx = 1) {
+segit <- function(x, dx = 111111) {
   crs <- sf::st_crs(x)
   sf::st_set_crs(sf::st_segmentize(sf::st_set_crs(x, NA), dx), crs)
 }  
 prj <- "+proj=laea +lat_0=-80"
 ## dx is 1 degree in straightforward sense
-plot(sf::st_transform(segit(to_sf(ex), 1), prj))
+plot(sf::st_transform(segit(to_sf(ex), 11111), prj))
 mm <- reproj::reproj(do.call(cbind, maps::map(plot = FALSE)[1:2]), prj, source = "+proj=longlat")[,1:2]
 lines(mm)
 ```
 
 <img src="man/figures/README-reproj-1.png" width="100%" />
-
-No reprojecting yet, need to check some stuff and probably densify the
-edges … there is densify funs in sosoc/croc WIP
 
 ## Code of Conduct
 

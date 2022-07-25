@@ -10,7 +10,7 @@ L3bin(NUMROWS = 2160)
 \item{NUMROWS}{relevant number of L3 bin rows}
 }
 \description{
-Originally from sosoc/croc where it is called initbin
+This function previously lived in sosoc/croc where it is called initbin
 }
 \examples{
 L3bin(1024)

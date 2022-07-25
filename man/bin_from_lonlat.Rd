@@ -11,14 +11,18 @@ bin_from_lonlat(lon, lat, NUMROWS)
 
 \item{lat}{latitude}
 
-\item{NUMROWS}{number of rows}
+\item{NUMROWS}{number of rows in the grid}
+}
+\value{
+integer vector of bin number
 }
 \description{
 Bin number from longitude and latitude for a given grid with NUMROWS unique latitudes.
 }
 \details{
-Originally from sosoc/croc where it is called lonlat2bin
+This function previously lived in sosoc/croc where it is called lonlat2bin
 }
 \examples{
 bin_from_lonlat(147, -42, 1024)
+bin_from_lonlat(c(0, 0, 0), c(-90, 0, 90), 1024)
 }

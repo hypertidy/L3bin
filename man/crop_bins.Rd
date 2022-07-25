@@ -18,7 +18,7 @@ integer vector of bins
 Crop L3 list, returns bins that fall within the extent.
 }
 \details{
-duplicated from sosoc/croc where it is called crop_init
+This function previously lived in sosoc/croc where it is called crop_init
 }
 \examples{
 init <- L3bin(24)

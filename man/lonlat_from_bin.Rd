@@ -4,16 +4,22 @@
 \alias{lonlat_from_bin}
 \title{Longitude and latitude from bin number.}
 \usage{
-lonlat_from_bin(bins, nrows)
+lonlat_from_bin(bins, NUMROWS)
 }
 \arguments{
 \item{bins}{bin number}
 
-\item{nrows}{number of rows in this grid}
+\item{NUMROWS}{number of rows in this grid}
+}
+\value{
+matrix of longitude, latitude the centre coordinate of the bin
 }
 \description{
 Generate longitude and latitude coordinates from bin number.
 }
 \details{
-Originally from sosoc/croc where it is called bin2lonlat
+This function previously lived in  sosoc/croc where it is called bin2lonlat
+}
+\examples{
+lonlat_from_bin(c(1, 184), 12)
 }
