@@ -9,7 +9,7 @@
 <!-- badges: end -->
 
 The goal of L3bin is to provide the [Integerized Sinusoidal Binning
-Scheme](https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/) used by
+Scheme](https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/) used by
 NASA’s Ocean Biology processing Group for Level 3 data.
 
 ## Installation
