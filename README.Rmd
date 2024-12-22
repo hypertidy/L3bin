@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/hypertidy/L3bin/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hypertidy/L3bin/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of L3bin is to provide the [Integerized Sinusoidal Binning Scheme](https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/) used by NASA's Ocean Biology processing Group for Level 3 data.
+The goal of L3bin is to provide the [Integerized Sinusoidal Binning Scheme](https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/) used by NASA's Ocean Biology processing Group for Level 3 data.
 
 ## Installation
 
