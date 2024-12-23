@@ -7,3 +7,4 @@
 ^docs$
 ^pkgdown$
 ^\.github$
+^inst/extdata/AQUA_MODIS.20241125.L3b.DAY.CHL.NRT.parquet$
