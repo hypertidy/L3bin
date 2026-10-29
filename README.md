@@ -9,8 +9,18 @@
 <!-- badges: end -->
 
 The goal of L3bin is to provide the [Integerized Sinusoidal Binning
-Scheme](https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/) used by
-NASA’s Ocean Biology processing Group for Level 3 data.
+Scheme](https://hypertidy.github.io/L3bin/articles/l3bins.html) used by NASA’s Ocean Biology processing
+Group for Level 3 data.
+
+The scheme is described on NASA OBPG’s page *Integerized Sinusoidal
+Binning Scheme for Level 3 Data*. The original page
+(<https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/>) is not
+always reliably available, so an archived copy is embedded in this
+package under
+[`inst/l3bins/`](https://github.com/hypertidy/L3bin/tree/main/inst/l3bins)
+for posterity, recovered
+from the [Wayback Machine capture of 6 Jan
+2026](https://web.archive.org/web/20260106075308/https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/).
 
 ## Installation
 
@@ -41,7 +51,7 @@ points(lonlat_from_bin(1:bins$totbins, NUMROWS = nr))
 
 <img src="man/figures/README-example-1.png" width="100%" />
 
-Now we increas the resolution and use the available froms to crop,
+Now we increase the resolution and use the available functions to crop,
 obtain bin boundaries, and provide the centre point of the bin from its
 index.
 
@@ -101,8 +111,7 @@ provides a simple core for this binning scheme.
 
 ### Warning
 
-The bin number is currently stored as an integer, so beyond \~41000 )
-rows this will overflow and we’d need to use a larger type to store it.
+The bin number is currently stored as an integer, so beyond \~41000 rows this will overflow and we’d need to use a larger type to store it.
 Let us know if you need this, or encounter problems. 41000 rows is near
 a 500m bin size, which is the resolution of GEBCO 2021 for example.
 
