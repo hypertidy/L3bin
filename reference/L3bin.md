@@ -16,7 +16,10 @@ L3bin(NUMROWS = 2160)
 
 ## References
 
-https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/
+NASA OBPG, Integerized Sinusoidal Binning Scheme for Level 3 Data,
+archived at <https://hypertidy.github.io/L3bin/articles/l3bins.html>
+(original:
+<https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/>).
 
 ## Examples
 
