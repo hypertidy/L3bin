@@ -81,7 +81,10 @@ bin_from_lonlat <- function(lon, lat, NUMROWS) {
   ibin <- L3bin(NUMROWS)
   row <- row_from_lat(lat, NUMROWS)
   col <- (lon + 180) * ibin$numbin[row] / 360
-  ##col[col >= ibin$numbin[row]] <- ibin$numbin[row] - 1
+  # lon = 180 is the seam; keep it in the last bin of its row
+  nb <- ibin$numbin[row]
+  over <- !is.na(col) & col >= nb
+  col[over] <- nb[over] - 1
   as.integer(ibin$basebin[row] + col)
 }
 
@@ -115,7 +118,9 @@ lonlat_from_bin <- function(bins, NUMROWS) {
 #' This function previously lived in sosoc/croc where it is called initbin
 #' @param NUMROWS relevant number of L3 bin rows
 #' @export
-#' @references https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/
+#' @references NASA OBPG, Integerized Sinusoidal Binning Scheme for Level 3 Data,
+#'   archived at <https://hypertidy.github.io/L3bin/articles/l3bins.html> (original:
+#'   <https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/>).
 #' @examples
 #' L3bin(1024)
 L3bin <- function(NUMROWS = 2160) {

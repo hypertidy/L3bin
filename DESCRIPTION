@@ -14,7 +14,9 @@ URL: https://web.archive.org/web/20260106075308/https://oceancolor.gsfc.nasa.gov
 BugReports: https://github.com/hypertidy/L3bin/issues
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 Config/Needs/website: 
     pkgdown
+Config/testthat/edition: 3
 Config/roxygen2/version: 8.1.0

@@ -16,5 +16,7 @@ This function previously lived in sosoc/croc where it is called initbin
 L3bin(1024)
 }
 \references{
-https://oceancolor.gsfc.nasa.gov/docs/format/l3bins/
+NASA OBPG, Integerized Sinusoidal Binning Scheme for Level 3 Data,
+archived at \url{https://hypertidy.github.io/L3bin/articles/l3bins.html} (original:
+\url{https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/}).
 }
