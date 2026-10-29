@@ -11,3 +11,4 @@
 ^\.posit/assistant$
 ^vignettes/articles$
 ^inst/l3bins/.*\.mhtml$
+^\.Rhistory$
