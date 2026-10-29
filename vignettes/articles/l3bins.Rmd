@@ -1,0 +1,36 @@
+---
+title: "Integerized Sinusoidal Binning Scheme for Level 3 Data"
+description: >
+  Archived NASA Ocean Biology Processing Group documentation of the Level 3
+  binning scheme, recovered from the Wayback Machine and embedded for posterity.
+resource_files:
+  - images/A2019163141000.Iceland.MODIS_pixel_overlay.png
+  - images/A2019163141000.Iceland.MODIS_L3b_overlay.png
+  - images/A2019163141000.Iceland.MODIS_L3m_overlay.png
+  - images/A2019163141000.Iceland.length_scale.png
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+> This page is an archived copy of NASA OBPG's documentation
+> *Integerized Sinusoidal Binning Scheme for Level 3 Data*
+> ([original](https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/)),
+> recovered from the
+> [Wayback Machine capture of 6 January 2026](https://web.archive.org/web/20260106075308/https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/)
+> and reproduced here for reference with attribution. The original is a work
+> of the US Government. Figures are the thumbnails from the saved page;
+> full-size versions link to the original site. The raw capture and the
+> Markdown source live in the package under `inst/l3bins/`.
+
+```{r, echo = FALSE, results = "asis"}
+lines <- readLines(
+  file.path("..", "..", "inst", "l3bins", "l3bins.md"),
+  encoding = "UTF-8"
+)
+# Drop the first level-1 heading; the page title comes from the YAML front matter
+h1 <- which(grepl("^# ", lines))[1]
+if (!is.na(h1)) lines <- lines[-h1]
+cat(lines, sep = "\n")
+```
