@@ -13,6 +13,11 @@ package under
 for posterity, recovered from the [Wayback Machine capture of 6 Jan
 2026](https://web.archive.org/web/20260106075308/https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/).
 
+The SeaWiFS L3 bin scheme also inspired the idea of storing per-cell
+sums and sums of squares on a discrete global grid system (DGGS) so that
+means and variances can be accumulated and combined later, as explored
+in [mdsumner/trend.sst](https://github.com/mdsumner/trend.sst).
+
 ## Installation
 
 You can install the development version of L3bin from
