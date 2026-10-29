@@ -23,6 +23,8 @@ The goal of L3bin is to provide the [Integerized Sinusoidal Binning Scheme](http
 
 The scheme is described on NASA OBPG's page *Integerized Sinusoidal Binning Scheme for Level 3 Data*. The original page (<https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/>) is not always reliably available, so an archived copy is embedded in this package under [`inst/l3bins/`](https://github.com/hypertidy/L3bin/tree/main/inst/l3bins) for posterity, recovered from the [Wayback Machine capture of 6 Jan 2026](https://web.archive.org/web/20260106075308/https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/).
 
+The SeaWiFS L3 bin scheme also inspired the idea of storing per-cell sums and sums of squares on a discrete global grid system (DGGS) so that means and variances can be accumulated and combined later, as explored in [mdsumner/trend.sst](https://github.com/mdsumner/trend.sst).
+
 ## Installation
 
 You can install the development version of L3bin from [GitHub](https://github.com/) with:

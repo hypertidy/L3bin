@@ -9,7 +9,6 @@ Description: The NASA Ocean Biology processing Group L3 bin scheme, based on the
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
 URL: https://web.archive.org/web/20260106075308/https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/, https://oceancolor.gsfc.nasa.gov/docs/technical/seawifs_reports/prelaunch/PreLVol32.pdf,
     https://hypertidy.github.io/L3bin/
 BugReports: https://github.com/hypertidy/L3bin/issues
@@ -18,3 +17,4 @@ Suggests:
     rmarkdown
 Config/Needs/website: 
     pkgdown
+Config/roxygen2/version: 8.1.0

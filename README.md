@@ -9,18 +9,22 @@
 <!-- badges: end -->
 
 The goal of L3bin is to provide the [Integerized Sinusoidal Binning
-Scheme](https://hypertidy.github.io/L3bin/articles/l3bins.html) used by NASA’s Ocean Biology processing
-Group for Level 3 data.
+Scheme](https://hypertidy.github.io/L3bin/articles/l3bins.html) used by
+NASA’s Ocean Biology processing Group for Level 3 data.
 
 The scheme is described on NASA OBPG’s page *Integerized Sinusoidal
 Binning Scheme for Level 3 Data*. The original page
-(<https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/>) is not
-always reliably available, so an archived copy is embedded in this
+(<https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/>) is
+not always reliably available, so an archived copy is embedded in this
 package under
 [`inst/l3bins/`](https://github.com/hypertidy/L3bin/tree/main/inst/l3bins)
-for posterity, recovered
-from the [Wayback Machine capture of 6 Jan
+for posterity, recovered from the [Wayback Machine capture of 6 Jan
 2026](https://web.archive.org/web/20260106075308/https://oceancolor.gsfc.nasa.gov/resources/docs/format/l3bins/).
+
+The SeaWiFS L3 bin scheme also inspired the idea of storing per-cell
+sums and sums of squares on a discrete global grid system (DGGS) so that
+means and variances can be accumulated and combined later, as explored
+in [mdsumner/trend.sst](https://github.com/mdsumner/trend.sst).
 
 ## Installation
 
@@ -49,7 +53,7 @@ rect(ex[,1], ex[,3], ex[,2], ex[, 4])
 points(lonlat_from_bin(1:bins$totbins, NUMROWS = nr))
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" alt="" width="100%" />
 
 Now we increase the resolution and use the available functions to crop,
 obtain bin boundaries, and provide the centre point of the bin from its
@@ -66,7 +70,7 @@ rect(ex[,1], ex[,3], ex[,2], ex[, 4])
 points(lonlat_from_bin(lbins,  NUMROWS = nr))
 ```
 
-<img src="man/figures/README-twelve-1.png" width="100%" />
+<img src="man/figures/README-twelve-1.png" alt="" width="100%" />
 
 ``` r
 
@@ -77,7 +81,7 @@ rect(ex[,1], ex[,3], ex[,2], ex[, 4])
 points(lonlat_from_bin(1:bins$totbins,  NUMROWS = nr))
 ```
 
-<img src="man/figures/README-twelve-2.png" width="100%" />
+<img src="man/figures/README-twelve-2.png" alt="" width="100%" />
 
 It should be clear that while we can easily up the detail and obtain
 very large numbers of bins, it’s much smarter to keep things lazy and
@@ -111,9 +115,10 @@ provides a simple core for this binning scheme.
 
 ### Warning
 
-The bin number is currently stored as an integer, so beyond \~41000 rows this will overflow and we’d need to use a larger type to store it.
-Let us know if you need this, or encounter problems. 41000 rows is near
-a 500m bin size, which is the resolution of GEBCO 2021 for example.
+The bin number is currently stored as an integer, so beyond ~41000 rows
+this will overflow and we’d need to use a larger type to store it. Let
+us know if you need this, or encounter problems. 41000 rows is near a
+500m bin size, which is the resolution of GEBCO 2021 for example.
 
 Get lonlat from bin and vice versa.
 
@@ -126,7 +131,7 @@ text(lonlat_from_bin(1:bins$totbins, nr), lab = 1:bins$totbins)
 abline(v = 147, h = -42, col = "firebrick")
 ```
 
-<img src="man/figures/README-bin-1.png" width="100%" />
+<img src="man/figures/README-bin-1.png" alt="" width="100%" />
 
 ``` r
 
@@ -169,7 +174,7 @@ mm <- reproj::reproj(do.call(cbind, maps::map(plot = FALSE)[1:2]), prj, source =
 lines(mm)
 ```
 
-<img src="man/figures/README-reproj-1.png" width="100%" />
+<img src="man/figures/README-reproj-1.png" alt="" width="100%" />
 
 ## Code of Conduct
 
