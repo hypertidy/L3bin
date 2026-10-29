@@ -9,7 +9,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/hypertidy/L3bin/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/hypertidy/L3bin/blob/v0.1.0/DESCRIPTION)
 
 Sumner M (2026). *L3bin: Integerized Sinusoidal Binning Scheme for Level
 3 Data*. R package version 0.1.0,
